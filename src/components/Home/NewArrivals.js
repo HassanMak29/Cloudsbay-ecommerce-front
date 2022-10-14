@@ -10,18 +10,16 @@ const NewArrivals = () => {
   const [productsCount, setProductsCount] = useState(0);
   const [page, setPage] = useState(1);
 
-  const isMounted = useRef(true);
   const sort = "createdAt";
   const order = "desc";
   const numProductsToFetch = 3;
+
   const loadAllProducts = useCallback(async () => {
     setLoading(true);
     try {
       // sort, order, page
       const res = await getProducts(sort, order, page);
-      if (isMounted.current) {
-        setProducts(res.data);
-      }
+      setProducts(res.data);
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -40,10 +38,6 @@ const NewArrivals = () => {
 
   useEffect(() => {
     loadAllProducts();
-
-    return () => {
-      isMounted.current = false;
-    };
   }, [loadAllProducts, page]);
 
   return (
@@ -66,8 +60,11 @@ const NewArrivals = () => {
         <nav className="col-md-4 offset-md-4 text-center pt-5 p3">
           <Pagination
             current={page}
-            total={Math.round((productsCount / 3) * 10)}
-            onChange={(value) => setPage(value)}
+            total={Math.ceil(productsCount / 3) * 10}
+            onChange={(value) => {
+              setPage(value);
+              console.log(value);
+            }}
           />
         </nav>
       </div>

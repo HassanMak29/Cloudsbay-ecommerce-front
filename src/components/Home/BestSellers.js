@@ -10,7 +10,6 @@ const BestSellers = () => {
   const [productsCount, setProductsCount] = useState(0);
   const [page, setPage] = useState(1);
 
-  const isMounted = useRef(true);
   const sort = "sold";
   const order = "desc";
   const numProductsToFetch = 3;
@@ -20,9 +19,7 @@ const BestSellers = () => {
     try {
       // sort, order, page
       const res = await getProducts(sort, order, page);
-      if (isMounted.current) {
-        setProducts(res.data);
-      }
+      setProducts(res.data);
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -41,14 +38,9 @@ const BestSellers = () => {
 
   useEffect(() => {
     loadAllProducts();
-
-    return () => {
-      isMounted.current = false;
-    };
   }, [loadAllProducts, page]);
 
   const onChangePage = (page) => {
-    console.log(page);
     setPage(page);
   };
 
@@ -73,7 +65,7 @@ const BestSellers = () => {
           <Pagination
             current={page}
             onChange={onChangePage}
-            total={(productsCount / 3) * 10}
+            total={Math.ceil(productsCount / 3) * 10}
           />
         </nav>
       </div>
