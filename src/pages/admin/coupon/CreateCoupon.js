@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import AdminNav from "../../../components/nav/AdminNav";
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,7 +8,7 @@ import {
   removeCoupon,
   createCoupon,
 } from "../../../functions/coupon";
-import { CloudUploadOutlined, DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 import { useState, useEffect } from "react";
 
 const CreateCoupon = () => {

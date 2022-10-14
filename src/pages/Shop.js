@@ -24,21 +24,9 @@ const Shop = () => {
   const [star, setStar] = useState("");
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
-  const [brands, setBrands] = useState([
-    "Apple",
-    "Samsung",
-    "Microsoft",
-    "Lenovo",
-    "Asus",
-  ]);
+  const brands = ["Apple", "Samsung", "Microsoft", "Lenovo", "Asus"];
   const [brand, setBrand] = useState("");
-  const [colors, setColors] = useState([
-    "Black",
-    "Brown",
-    "Silver",
-    "White",
-    "Blue",
-  ]);
+  const colors = ["Black", "Brown", "Silver", "White", "Blue"];
   const [color, setColor] = useState("");
   const [shipping, setShipping] = useState("");
 
@@ -138,10 +126,10 @@ const Shop = () => {
   }
 
   // 5.show products by star rating
-  function handleStarClick(num) {
+  function handleStarClick(event_num) {
     resetAllFilters();
-    setStar(num);
-    fetchProducts({ stars: num });
+    setStar(event_num);
+    fetchProducts({ stars: star });
   }
 
   const showStars = () => {
@@ -167,9 +155,9 @@ const Shop = () => {
   };
 
   // 6. products by sub category
-  const handleSub = (sub) => {
+  const handleSub = (event_sub) => {
     resetAllFilters();
-    setSub(sub);
+    setSub(event_sub);
     fetchProducts({ sub });
   };
 

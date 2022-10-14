@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
 
-const ForgotPassword = ({ history }) => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const user = useSelector((state) => state.user);
 
   //   redirect user to home page if they are logged in. See App.js for alternative way
   //   useEffect(() => {
@@ -25,7 +22,7 @@ const ForgotPassword = ({ history }) => {
       handleCodeInApp: true,
     };
     try {
-      const result = await auth.sendPasswordResetEmail(email, config);
+      await auth.sendPasswordResetEmail(email, config);
       setEmail("");
       setLoading(false);
       toast.success("Check your email for password reset link");

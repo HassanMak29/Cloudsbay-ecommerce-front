@@ -5,14 +5,12 @@ import laptop from "../../images/laptop.png";
 import { Link } from "react-router-dom";
 import ShowAverage from "../../functions/Rating";
 import _ from "lodash";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const { Meta } = Card;
 
 const ProductCard = ({ product }) => {
   const [tooltip, setTooltip] = useState("Click to add");
-
-  const { user, cart } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const handleRemove = () => {};
