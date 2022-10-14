@@ -1,12 +1,12 @@
 import React from "react";
 import { Document, Page, Text, StyleSheet } from "@react-pdf/renderer";
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableCell,
-  DataTableCell,
-} from "@david.kucsai/react-pdf-table";
+// import {
+//   Table,
+//   TableHeader,
+//   TableBody,
+//   TableCell,
+//   DataTableCell,
+// } from "@david.kucsai/react-pdf-table";
 
 const Invoice = ({ order }) => {
   const styles = StyleSheet.create({
@@ -71,7 +71,7 @@ const Invoice = ({ order }) => {
         <Text style={styles.author}>MERN stack E-commerce</Text>
         <Text style={styles.subtitle}>Order summary</Text>
 
-        <Table>
+        {/* <Table>
           <TableHeader>
             <TableCell>Title</TableCell>
             <TableCell>Price</TableCell>
@@ -88,7 +88,7 @@ const Invoice = ({ order }) => {
             <DataTableCell getContent={(x) => x.product.brand} />
             <DataTableCell getContent={(x) => x.product.color} />
           </TableBody>
-        </Table>
+        </Table> */}
 
         <Text style={styles.text}>
           <Text>
